@@ -4,6 +4,7 @@ import { BugPriority, IBug } from './components/IBug';
 import { v4 as uuid } from 'uuid';
 
 function App() {
+
   const [newBugDescription, setNewBugDescription] = useState<string>('');
   const [newBugPriority, setNewBugPriority] = useState<string>('Medium');
   const [bugList, setBugList] = useState<IBug[]>([]);
@@ -23,9 +24,13 @@ function App() {
 
     setNewBugDescription('');
     setNewBugPriority('Medium');
-    }
   }
-  const deleteBug = () => {}
+
+  const deleteBug = (id: string) => {
+    const bugs = bugList.filter(bug => bug.id !== id);
+
+    setBugList(bugs);
+  };
 
   return (
     <div className="App">
