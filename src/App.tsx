@@ -39,7 +39,7 @@ function App() {
 
       <BugListTable bugs={bugList} onDeleteBug={(id: string) => deleteBug(id)} />
 
-      <form onSubmit={addBug}>
+      <form className="add-new-bug-form" onSubmit={addBug}>
         <label htmlFor="newBugDescription">
           New bug description: 
         </label>
