@@ -1,13 +1,30 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import './App.css';
-import { IBug } from './components/IBug';
+import { BugPriority, IBug } from './components/IBug';
+import { v4 as uuid } from 'uuid';
 
 function App() {
   const [newBugDescription, setNewBugDescription] = useState<string>('');
   const [newBugPriority, setNewBugPriority] = useState<string>('Medium');
   const [bugList, setBugList] = useState<IBug[]>([]);
 
-  const addBug = () => {}
+  const addBug = (e: FormEvent) => {
+    e.preventDefault();
+    const newBug: IBug = {
+      id: uuid(),
+      description: newBugDescription,
+      priority: newBugPriority as BugPriority,
+    }
+
+    setBugList([
+      ...bugList, 
+      newBug
+    ]);
+
+    setNewBugDescription('');
+    setNewBugPriority('Medium');
+    }
+  }
   const deleteBug = () => {}
 
   return (
